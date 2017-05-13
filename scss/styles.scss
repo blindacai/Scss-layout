@@ -1,0 +1,35 @@
+// variables
+
+$deepBlue: #032f3e;
+$offWhite: #f8f9fb;
+$sectionHeading: 24px;
+
+#main-nav{
+    background: $deepBlue;
+    ul{
+        width: 100%;
+    }
+    li{
+        float: left;   // float makes its container(ul) think there is no content in between, so the ul's height becomes 0; the background color is gone
+        width: 14%;
+    }
+    a{
+        color: $offWhite;
+        text-decoration: none;   // to get rid of the underline
+        padding: 16px;
+        display: block;
+        text-align: center;
+    }
+} // end #main-nav
+
+// to clear fix and bring back background color
+#main-nav ul:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+section h1{
+    font-size: $sectionHeading;
+    color: $deepBlue;
+}
