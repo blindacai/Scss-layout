@@ -3,6 +3,40 @@
 $deepBlue: #032f3e;
 $offWhite: #f8f9fb;
 $sectionHeading: 24px;
+$bannerHeading: 46px;
+
+// Mixins
+// can be applied to other class
+@mixin banner{
+    width: 100%;
+    position: relative;
+    /*
+        relative: an element's original position remains in the flow of the document; 'left, top, ...' will work
+        absolute: the element is removed from the flow of the document; other elements will behave as if it's not there while positional properties will work on it
+        tips: to make a child element positioned absolutely from its parent element instead of doc, we need to use relative on parent
+        source: css-tricks, position
+    */
+    color: white;
+    .banner-content{
+        position: absolute;   // position the text on the image
+        top: 50px;
+        width: 100%;
+    }
+    img{
+        width: 100%;
+    }
+    span{
+        font-size: $bannerHeading;
+        display: block;              // display text in two lines
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    span.title{
+        font-weight: normal;
+        margin-bottom: 30px;
+    }
+}
 
 #main-nav{
     background: $deepBlue;
@@ -25,11 +59,27 @@ $sectionHeading: 24px;
 // to clear fix and bring back background color
 #main-nav ul:after{
     content: "";
-    display: block;
+    display: block;   // looks like block only applies to text here
     clear: both;
 }
 
 section h1{
     font-size: $sectionHeading;
     color: $deepBlue;
+}
+
+.lead-banner{
+    @include banner;
+    text-align: right;
+}
+
+.lessons-banner{
+    @include banner;
+    li{
+        text-transform: uppercase;
+        font-size: 20px;
+        max-width: 500px;
+        margin: 60px 0;    // 60px for up and bottom; 0 for left and right
+                           // if only one number specified, it will be applied to all four directions
+    }
 }
