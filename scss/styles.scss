@@ -7,13 +7,7 @@
     background: $deepBlue;
     ul{
         width: 100%;
-
-        // to clear fix and bring back background color
-        &:after{
-            content: "";
-            display: block;   // looks like block only applies to text here
-            clear: both;
-        }
+        @include clearFix;
     }
     li{
         float: left;   // float makes its container(ul) think there is no content in between, so the ul's height becomes 0; the background color is gone
