@@ -12,6 +12,10 @@
     li{
         float: left;   // float makes its container(ul) think there is no content in between, so the ul's height becomes 0; the background color is gone
         width: (100% / 6);
+        @include mQ(600px){
+            width: 100%;   // when screen size <= 600px, li will stack onto each other
+                           // what's between here will be passed to @content at mixins
+        }
     }
     a{
         color: $offWhite;
