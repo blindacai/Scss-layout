@@ -23,6 +23,9 @@
         display: block;              // display text in two lines
         text-transform: uppercase;
         font-weight: bold;
+        @include mQ(3000px, 1000px){   // apply when in between these two values
+            font-size: 55px;
+        }
     }
 
     span.title{
@@ -51,8 +54,15 @@
 }
 
 // media query
-@mixin mQ($arg){
-    @media screen and (max-width: $arg){
-        @content;
+@mixin mQ($arg...){
+    @if length($arg) == 1{
+        @media screen and (max-width: nth($arg, 1)){
+            @content;
+        }
+    }
+    @if length($arg) == 2{
+        @media screen and (max-width: nth($arg, 1)) and (min-width: nth($arg, 2)){
+            @content;
+        }
     }
 }
